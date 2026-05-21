@@ -532,3 +532,152 @@ footer {
 .services-grid .card:nth-child(2) { animation-delay: 0.2s; }
 .services-grid .card:nth-child(3) { animation-delay: 0.3s; }
 .services-grid .card:nth-child(4) { animation-delay: 0.4s; }
+/* ====== RESPONSIVE - MOBILE & TABLET ====== */
+
+/* شاشات كبيرة (أقل من 1200px) */
+@media (max-width: 1200px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr); /* عمودان بدل 4 */
+    }
+}
+
+/* التابلت (أقل من 992px) */
+@media (max-width: 992px) {
+    nav {
+        padding: 15px 30px;
+    }
+    
+    nav.scrolled {
+        padding: 10px 30px;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .about-container {
+        flex-direction: column; /* تحويل للعمودي */
+        gap: 40px;
+    }
+    
+    .about-image {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .about-cols {
+        grid-template-columns: 1fr 1fr; /* عمودان */
+    }
+    
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* الموبايل الكبير (أقل من 768px) */
+@media (max-width: 768px) {
+    /* القائمة */
+    nav ul {
+        display: none; /* إخفاء الروابط - يجب إضافة زر 메뉴 */
+    }
+    
+    /* الهيرو */
+    #home {
+        padding: 100px 20px 40px;
+    }
+    
+    .hero-content h1 {
+        font-size: 32px; /* تصغير العنوان */
+    }
+    
+    .hero-content p {
+        font-size: 15px;
+    }
+    
+    /* الخدمات */
+    #services {
+        padding: 80px 20px;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr; /* عمود واحد */
+    }
+    
+    .card img {
+        height: 180px;
+    }
+    
+    /*黄色strip */
+    .yellow-content {
+        padding: 50px 20px 60px;
+    }
+    
+    /* Germany Map */
+    .germany-divider {
+        height: 400px;
+    }
+    
+    .map-overlay {
+        padding: 20px;
+        width: 90%;
+    }
+    
+    /* ABOUT */
+    #about {
+        padding: 80px 20px;
+    }
+    
+    .about-card {
+        padding: 30px 20px;
+    }
+    
+    .about-cols {
+        grid-template-columns: 1fr;
+    }
+    
+    /* FOOTER */
+    footer {
+        padding: 30px 20px 15px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+/* الموبايل الصغير (أقل من 480px) */
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 26px;
+    }
+    
+    .hero-content p {
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+    
+    .hero-content a {
+        padding: 12px 24px;
+        font-size: 13px;
+    }
+    
+    #services h2 {
+        font-size: 28px;
+    }
+    
+    .about-card h2 {
+        font-size: 22px;
+    }
+    
+    .map-overlay h2 {
+        font-size: 22px;
+    }
+}
