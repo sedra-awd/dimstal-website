@@ -1,6 +1,6 @@
-// تأثير ظهور العناصر عند التمرير
+// 1. تأثير ظهور العناصر الفخم عند التمرير (Scroll Reveal)
 const observerOptions = {
-    threshold: 0.2
+    threshold: 0.15
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -11,12 +11,11 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// تطبيق التأثير على العناصر المخفية
-document.querySelectorAll('.hidden, .card, .about-col').forEach(el => {
+document.querySelectorAll('.card, .about-col, .about-card').forEach(el => {
     observer.observe(el);
 });
 
-// تأثير تصغير القائمة عند التمرير
+// 2. تأثير تصغير وتغيير خلفية شريط القائمة العلوي عند النزول لأسفل
 window.addEventListener('scroll', () => {
     const nav = document.querySelector('nav');
     if (window.scrollY > 50) {
@@ -26,18 +25,23 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// تأثيرsmooth scroll للروابط
+// 3. تأثير الانتقال السلس والنظيف عند الضغط على الروابط (Smooth Scroll)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const targetElement = document.querySelector(this.getAttribute('href'));
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
     });
 });
+
+// 4. إعداد الخريطة والتركيز التلقائي على Karlsruhe الألمانية
 var map = L.map('map', {
-    center: [49.0069, 8.4037], // Karlsruhe
-    zoom: 4,
+    center: [49.0069, 8.4037], 
+    zoom: 5, // تقريب الرؤية قليلاً لتظهر ألمانيا بوضوح وسط أوروبا
     scrollWheelZoom: false
 });
 
@@ -45,23 +49,6 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 
-//marker لـ Karlsruhe
+// إضافة دبوس الماركر وتفعيله ليفتح تلقائياً (.openPopup)
 var marker = L.marker([49.0069, 8.4037]).addTo(map);
-marker.bindPopup('<b>DIMSTAL</b><br>Karlsruhe, Germany');
-// NAV SCROLL EFFECT
-window.addEventListener("scroll", () => {
-  const nav = document.querySelector("nav");
-  nav.classList.toggle("scrolled", window.scrollY > 50);
-});
-
-// SCROLL REVEAL
-const elements = document.querySelectorAll('.card, .about-col, .about-card');
-
-window.addEventListener('scroll', () => {
-  elements.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
-      el.classList.add('show');
-    }
-  });
-});
+marker.bindPopup('<b>DIMSTAL</b><br>Karlsruhe, Germany').openPopup();
