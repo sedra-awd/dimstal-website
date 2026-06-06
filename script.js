@@ -48,3 +48,20 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 //marker لـ Karlsruhe
 var marker = L.marker([49.0069, 8.4037]).addTo(map);
 marker.bindPopup('<b>DIMSTAL</b><br>Karlsruhe, Germany');
+// NAV SCROLL EFFECT
+window.addEventListener("scroll", () => {
+  const nav = document.querySelector("nav");
+  nav.classList.toggle("scrolled", window.scrollY > 50);
+});
+
+// SCROLL REVEAL
+const elements = document.querySelectorAll('.card, .about-col, .about-card');
+
+window.addEventListener('scroll', () => {
+  elements.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      el.classList.add('show');
+    }
+  });
+});
